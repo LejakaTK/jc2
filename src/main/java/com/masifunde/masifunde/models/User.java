@@ -1,4 +1,4 @@
-package com.masifunde.masifunde.repository;
+package com.masifunde.masifunde.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
