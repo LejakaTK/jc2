@@ -18,6 +18,11 @@ public class UserResource {
         return userRepository.findAll();
     }
 
+    @PostMapping(value = "/user")
+    public List<User> getUserbyEmail(@RequestParam String email){
+        return userRepository.findByEmail(email);
+    }
+
     @PostMapping(value = "/add")
     public List<User> persist(@RequestBody final User user){
         userRepository.save(user);
