@@ -28,4 +28,17 @@ public class UserResource {
         userRepository.save(user);
         return userRepository.findAll();
     }
+
+    @PutMapping (value = "/add")
+    public List<User> biggie(@RequestBody final User user, @RequestParam String email){
+        if(!userRepository.findByEmail(email).isEmpty()){
+            userRepository.save(user);
+        }
+        else{
+            userRepository.save(user);
+        }
+        return userRepository.findAll();
+    }
+
+
 }
