@@ -30,7 +30,7 @@ public class UserResource {
     }
 
     @PutMapping (value = "/add")
-    public List<User> biggie(@RequestBody final User user, @RequestParam String email){
+    public List<User> update(@RequestBody final User user, @RequestParam String email){
         if(!userRepository.findByEmail(email).isEmpty()){
             userRepository.save(user);
         }
@@ -40,5 +40,9 @@ public class UserResource {
         return userRepository.findAll();
     }
 
-
+    @DeleteMapping("/delete/{id}")
+    public List<User> deleteUser(@PathVariable Integer id) {
+        userRepository.deleteById(id);
+        return userRepository.findAll();
+    }
 }
