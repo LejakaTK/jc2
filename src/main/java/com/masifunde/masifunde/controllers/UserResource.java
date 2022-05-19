@@ -15,22 +15,26 @@ public class UserResource {
     UserRepository userRepository;
 
     @GetMapping(value = "/all")
+    //http://localhost:8080/rest/users/all
     public List<User> getAll(){
         return userRepository.findAll();
     }
 
     @PostMapping(value = "/user")
+    //http://localhost:8080/rest/users/user?email=tklejaka@absa.com
     public List<User> getUserbyEmail(@RequestParam String email){
         return userRepository.findByEmail(email);
     }
 
     @PostMapping(value = "/add")
+    //http://localhost:8080/rest/users/add
     public List<User> persist(@RequestBody final User user){
         userRepository.save(user);
         return userRepository.findAll();
     }
 
     @PutMapping (value = "/add")
+    //http://localhost:8080/rest/users/add?email=siwelas@absa.com
     public List<User> update(@RequestBody final User user, @RequestParam String email){
         if(!userRepository.findByEmail(email).isEmpty()){
             userRepository.save(user);
@@ -42,6 +46,7 @@ public class UserResource {
     }
 
     @DeleteMapping("/delete/{email}")
+    //http://localhost:8080/rest/users/delete/siwelas@absa.com
     public List<User> deleteUser(@PathVariable String email) {
         User user = new User();
         Integer id=0;
